@@ -1,0 +1,24 @@
+
+:root {
+    --color-primary: white;
+    --color-secondary: #fa4c14;
+    --font-primary: "Grotesk";
+    --font-pixel: "Mondwest";
+    --font-title: "Grotesk-Bold";
+}
+
+@font-face {
+    font-family: "Mondwest";
+    src: url('/Mondwest-Regular.woff2') format('woff2');
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: "Grotesk";
+    src: url('/NonNaturalGrotesk-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: "Grotesk-Bold";
+    src: url('/NonNaturalGrotesk-Bold.woff2') format('woff2');
+}
