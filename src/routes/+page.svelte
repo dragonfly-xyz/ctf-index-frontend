@@ -1,6 +1,14 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
     import MdLaunch from 'svelte-icons/md/MdLaunch.svelte';
+    import CONTESTS_ from '../contests.json';
+
+    const CONTESTS = (CONTESTS_ as Array<{
+        title: string;
+        date: string;
+        description: string;
+    }>)
+        .map(c => ({ ...c, date: new Date(c.date) }))
+        .filter(c => c.date.getTime() <= Date.now());
 
     function navTo(uri: string): void {
         window.location.href = uri;
@@ -24,6 +32,9 @@
         flex-direction: column;
         
         > .contest {
+            background: url('/glitch.gif') repeat, rgba(#000, 0.975);
+            background-size: 86ex 24em;
+            background-blend-mode: multiply;
             width: 100%;
             flex: 1 1 auto;
             margin: 0;
@@ -34,12 +45,11 @@
             border: none;
             vertical-align: inherit;
             cursor: pointer;
-            background: none;
             color: inherit;
             padding: 8ex;
             
             &:hover {
-                background-color: var(--highlight-color);
+                background: var(--highlight-color);
                 color: black;
             }
 
@@ -56,6 +66,7 @@
                     margin: 0;
                     font-style: var(--font-pixel);
                     text-decoration: underline;
+                    font-family: 'Groteks-Bold';
                 }
     
                 > .date {
@@ -81,28 +92,18 @@
 </style>
 
 <div class="content">
+    {#each CONTESTS as contest}
     <button class="contest" on:click={() => navTo('https://dragonfly-xyz.github.io/nottingham-frontend')}>
         <div class="body">
             <div class="link-icon">
                 <MdLaunch />
             </div>
-            <h2>Searchers of Nottingham</h2>
-            <div class="date">06/15/2024</div>
+            <h2>{contest.title}</h2>
+            <div class="date">{contest.date.toLocaleDateString()}</div>
             <div class="description">
-                Submit smart contract agents to compete against other merchants at a medieval faire in this multiplayer, MEV-themed game.
+                {contest.description}
             </div>
         </div>
     </button>
-    <button class="contest" on:click={() => navTo('https://ctf.dragonfly.xyz')}>
-        <div class="body">
-            <div class="link-icon">
-                <MdLaunch />
-            </div>
-            <h2>Puzzlebox</h2>
-            <div class="date">05/05/2023</div>
-            <div class="description">
-                Can you unlock this puzzlebox of fiendishly clever, inteconnected Solidity puzzles? How efficently can you do it?
-            </div>
-        </div>
-    </button>
+    {/each}
 </div>
