@@ -5,6 +5,7 @@
     const CONTESTS = (CONTESTS_ as Array<{
         title: string;
         date: string;
+        link: string;
         description: string;
     }>)
         .map(c => ({ ...c, date: new Date(c.date) }))
@@ -93,7 +94,7 @@
 
 <div class="content">
     {#each CONTESTS as contest}
-    <button class="contest" on:click={() => navTo('https://dragonfly-xyz.github.io/nottingham-frontend')}>
+    <button class="contest" on:click={() => navTo(contest.link)}>
         <div class="body">
             <div class="link-icon">
                 <MdLaunch />
