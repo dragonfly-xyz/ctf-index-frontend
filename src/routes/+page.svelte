@@ -5,11 +5,16 @@
     const CONTESTS = (CONTESTS_ as Array<{
         title: string;
         date: string;
+        reveal?: string;
         link: string;
         description: string;
     }>)
-        .map(c => ({ ...c, date: new Date(c.date) }))
-        .filter(c => c.date.getTime() <= Date.now());
+        .map(c => ({
+            ...c,
+            date: new Date(c.date),
+            reveal: c.reveal ? new Date(c.reveal) : new Date(0),
+        }))
+        .filter(c => c.reveal.getTime() <= Date.now());
 
     function navTo(uri: string): void {
         window.location.href = uri;
