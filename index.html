@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="https://www.dragonfly.xyz/favicon-32x32.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="modulepreload" href="./_app/immutable/entry/start.D4nyGkOr.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.DkCbk0H0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.DTOClJAy.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.DbRc2vB1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.DtpxxhFh.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_vdy9of = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/ctf-index"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.D4nyGkOr.js"),
+						import("./_app/immutable/entry/app.DbRc2vB1.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
